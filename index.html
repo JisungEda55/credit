@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits & License</title>
+    <style>
+        @font-face {
+            font-family: 'LINESeedKR-Bd';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'LINESeedKR-Bd', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .content {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* 자동으로 줄바꿈 적용 */
+            word-wrap: break-word;  /* 긴 단어 줄바꿈 */
+        }
+    </style>
+</head>
+<body>
+    <h1>공통</h1>
+    <div id="univ-content" class="content">Loading...</div>
+
+    <h1>개별</h1>
+    <div id="unido-content" class="content">Loading...</div>
+
+    <h1>특수</h1>
+    <div id="unido2-content" class="content">Loading...</div>
+
+    <script>
+        // 줄바꿈을 <br>로 변환하는 함수
+        function formatText(text) {
+            return text.replace(/\n/g, '<br>');
+        }
+
+        // 공통 파일 가져오기
+        fetch('https://raw.githubusercontent.com/JisungEda55/assetzip/main/UNIV.md')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('univ-content').innerHTML = formatText(data);
+        })
+        .catch(error => {
+            document.getElementById('univ-content').textContent = 'Error loading UNIV.md';
+            console.error('Error:', error);
+        });
+
+        // 개별 파일 가져오기
+        fetch('https://raw.githubusercontent.com/JisungEda55/assetzip/main/UNIDO.md')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('unido-content').innerHTML = formatText(data);
+        })
+        .catch(error => {
+            document.getElementById('unido-content').textContent = 'Error loading UNIDO.md';
+            console.error('Error:', error);
+        });
+
+        // 특수 파일 가져오기
+        fetch('https://raw.githubusercontent.com/JisungEda55/assetzip/main/UNIDO2.md')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('unido2-content').innerHTML = formatText(data);
+        })
+        .catch(error => {
+            document.getElementById('unido2-content').textContent = 'Error loading UNIDO2.md';
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>
